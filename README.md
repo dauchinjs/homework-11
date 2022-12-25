@@ -14,7 +14,7 @@ Project is created with:
 ### The following PHP packages and extensions are used:
 ```
 * vlucas/phpdotenv: ^5.5
-* guzzlehttp/guzzle: "^6.2
+* guzzlehttp/guzzle: ^6.2
 * finnhub/client: ^1.1
 * doctrine/dbal: ^3.5
 * respect/validation: ^2.2
