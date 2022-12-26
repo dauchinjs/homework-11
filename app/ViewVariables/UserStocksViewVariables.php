@@ -2,7 +2,6 @@
 
 namespace App\ViewVariables;
 
-use App\Services\Database;
 use App\Services\User\UserService;
 
 class UserStocksViewVariables implements ViewVariables
