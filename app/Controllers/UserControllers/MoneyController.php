@@ -18,10 +18,12 @@ class MoneyController
         $moneyValidation = new MoneyValidation($totalMoney);
 
         if($moneyValidation->success()) {
-            $moneyService->updateMoney($totalMoney);
+            $moneyService->updateMoney($totalMoney, $_SESSION['auth_id']);
             return new Redirect('/profile');
         }
         $_SESSION['error']['insufficientFundsInWallet'] = true;
+
+
 
         return new Redirect('/profile');
     }
