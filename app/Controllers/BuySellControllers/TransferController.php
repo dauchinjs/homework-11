@@ -27,6 +27,11 @@ class TransferController
 
             return new Redirect('/transfer');
         }
+        if($stockValidation->getAmount() < $_POST['amount']) {
+            $_SESSION['error']['notEnoughStocks'] = true;
+
+            return new Redirect('/transfer');
+        }
 
         $userValidation = new UserValidation($_POST['email']);
         if ($userValidation->success() === false) {
@@ -47,6 +52,15 @@ class TransferController
             $_SESSION['error']['wrongPassword'] = true;
 
             return new Redirect('/transfer');
+        }
+        if($info['email'] === $_POST['email']) {
+            $_SESSION['error']['sameUser'] = true;
+
+            return new Redirect('/transfer');
+        }
+
+        if ($userValidation->success() === true) {
+            $_SESSION['success']['transfer'] = true;
         }
 
         $userStock = $transferStockService->getStockBySymbol($_POST['symbol']);
