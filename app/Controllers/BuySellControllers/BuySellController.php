@@ -45,7 +45,9 @@ class BuySellController
             ($stockService->getCurrentPrice() * (int)$_POST['buy']);
 
         $moneyValidation = new MoneyValidation($totalMoney);
-        if (!$moneyValidation->success()) {
+        if ($moneyValidation->success() === true) {
+            $_SESSION['success']['operation'] = true;
+        } else {
             $_SESSION['error']['insufficientFunds'] = true;
 
             return new Redirect('/buySell?symbol=' . $_GET['symbol']);
