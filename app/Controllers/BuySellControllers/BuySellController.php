@@ -1,4 +1,8 @@
 <?php
+// 3gifi no 3 dazadam vietam ka strada. readme.md faila githuba - jaapraksta kas notiek, php versija, mysql versija, uzstadisanas process
+// un tad 3 gifi apaksa. jaeksporte datubaze bez datiem (eksporte datubazes shemu) (.sql dump fails) tas ta lai nebutu jaunam lietotajam jataisa datubaze
+//sis bus musu pirmais job-seeker-diary projekts
+
 
 namespace App\Controllers\BuySellControllers;
 
@@ -58,8 +62,16 @@ class BuySellController
 
         $transactionService = new TransactionService();
 
+        $boughtStock = $userService->getUserStock($_SESSION['auth_id'], $_GET['symbol']);
+
+        if ($boughtStock === null) {
+            $boughtStock = 0;
+        } else {
+            $boughtStock = $boughtStock->getPrice();
+        }
+
         if ($_POST['sell'] !== '') {
-            if($ownedAmount <= 0) {
+            if ($ownedAmount <= 0) {
                 $service->execute(
                     $_SESSION['auth_id'],
                     $_GET['symbol'],
@@ -67,11 +79,11 @@ class BuySellController
                     $totalAmount,
                 );
                 $sellProfit = $stockService->getCurrentPrice() * (int)$_POST['sell'] -
-                    $userService->getUserStock($_SESSION['auth_id'], $_GET['symbol'])->getPrice() * (int)$_POST['sell'];
+                    $boughtStock * (int)$_POST['sell'];
                 $transactionService->sellTransaction($stockService, $sellProfit, $_POST['sell'], $_SESSION['auth_id']);
             } else {
                 $sellProfit = $stockService->getCurrentPrice() * (int)$_POST['sell'] -
-                    $userService->getUserStock($_SESSION['auth_id'], $_GET['symbol'])->getPrice() * (int)$_POST['sell'];
+                    $boughtStock * (int)$_POST['sell'];
                 $transactionService->sellTransaction($stockService, $sellProfit, $_POST['sell'], $_SESSION['auth_id']);
                 $service->execute(
                     $_SESSION['auth_id'],
@@ -82,9 +94,9 @@ class BuySellController
             }
         }
         if ($_POST['buy'] !== '') {
-            if($ownedAmount < 0) {
+            if ($ownedAmount < 0) {
                 $buyProfit = $stockService->getCurrentPrice() * (int)$_POST['buy'] -
-                    $userService->getUserStock($_SESSION['auth_id'], $_GET['symbol'])->getPrice() * (int)$_POST['buy'];
+                    $boughtStock * (int)$_POST['buy'];
                 $transactionService->buyTransaction($stockService, $buyProfit, $_POST['buy'], $_SESSION['auth_id']);
                 $service->execute(
                     $_SESSION['auth_id'],
@@ -100,11 +112,11 @@ class BuySellController
                     $totalAmount
                 );
                 $buyProfit = $stockService->getCurrentPrice() * (int)$_POST['buy'] -
-                    $userService->getUserStock($_SESSION['auth_id'], $_GET['symbol'])->getPrice() * (int)$_POST['buy'];
+                    $boughtStock * (int)$_POST['buy'];
                 $transactionService->buyTransaction($stockService, $buyProfit, $_POST['buy'], $_SESSION['auth_id']);
             }
         }
-        
+
         return new Redirect('/buySell?symbol=' . $_GET['symbol']);
     }
 }
