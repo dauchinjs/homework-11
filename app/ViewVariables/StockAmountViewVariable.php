@@ -27,7 +27,7 @@ class StockAmountViewVariable implements ViewVariables
             ->setParameter(0, $_GET['symbol'])
             ->setParameter(1, $_SESSION['auth_id'])
             ->fetchAllAssociative();
-//var_dump($_GET['symbol']);die;
+
         return [
             'amount' => $amount[0]['amount'],
         ];
