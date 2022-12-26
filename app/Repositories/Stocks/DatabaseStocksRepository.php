@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Stocks;
 
-use App\Models\Stock;
 use App\Models\UserStockModel;
 use App\Services\Database;
 
