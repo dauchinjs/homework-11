@@ -14,7 +14,9 @@ Project is created with:
 ## Setup
 1. Clone this repository: `git clone https://github.com/dauchinjs/stock-market.git`
 2. Install all dependencies: `composer install`
-3. Import the database: `mysql -u root -p < schema.sql`
-4. Rename the `.env.example` file to `.env`
-5. Add your credentials to the `.env` file
-6. To run the project, locate `/public` folder and you can use command `php -S localhost:8000` to run the project in your browser
+3. Make a database
+4. Import the database: `mysql -u 'user' -p 'database name' < schema.sql`
+* Replace 'user' with the username you are using and 'database name' with the database you just made.
+5. Rename the `.env.example` file to `.env`
+6. Add your credentials to the `.env` file
+7. To run the project, locate `/public` folder and you can use command `php -S localhost:8000` to run the project in your browser
