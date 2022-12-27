@@ -1,10 +1,10 @@
 # Stock-market
 
 ## Table of contents
-*[General info](#general-info)
-*[Technologies](#technologies)
-*[Setup](#setup)
-*[Demonstration](#demonstration)
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Demonstration](#demonstration)
 
 ## General info
 
