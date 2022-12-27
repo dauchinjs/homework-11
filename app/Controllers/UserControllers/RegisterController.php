@@ -20,7 +20,7 @@ class RegisterController
         $user = $registerService->execute($_POST['name'], $_POST['email'], $_POST['password'], $_POST['password_repeat']);
 
         if($user === null) {
-            return new Redirect('/register');
+            return new Redirect('/login');
         }
         $_SESSION['auth_id'] = $user->getId();
 
