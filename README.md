@@ -22,4 +22,18 @@ Project is created with:
 7. To run the project, locate `/public` folder and you can use command `php -S localhost:8000` to run the project in your browser
 
 ## Demonstration
+
+### Home page
+![home page](https://github.com/dauchinjs/stock-market/blob/main/demonstration/stock-market.png)
+
+### Register and login
+![register login](https://github.com/dauchinjs/stock-market/blob/main/demonstration/regist-login.gif)
+
+### Deposit withdraw funds
+![deposit withdraw](https://github.com/dauchinjs/stock-market/blob/main/demonstration/deposit-withdraw.gif)
+
+### Buy Sell stock and short sell
 ![buy sell](https://github.com/dauchinjs/stock-market/blob/main/demonstration/buy-sell.gif)
+
+### Transfer stock to a friend by e-mail and transaction history
+![transfer history](https://github.com/dauchinjs/stock-market/blob/main/demonstration/transfer-history.gif)
