@@ -1,5 +1,11 @@
 # Stock-market
 
+## Table of contents
+*[General info](#general-info)
+*[Technologies](#technologies)
+*[Setup](#setup)
+*[Demonstration](#demonstration)
+
 ## General info
 
 This project uses an API-Key from finnhub.io to get information about the stock-market. In this project it is possible to see 10 my selected stocks, search any existing stock and see it's price currently, previous close price and the percent change. You are able to withdraw & deposit money, buy & sell stocks (short & long), transfer them to a friend, follow along your profit in your transaction history.
