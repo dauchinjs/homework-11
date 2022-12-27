@@ -26,7 +26,7 @@ $container->set(
     \DI\create(MarketApiStocksRepository::class),
 );
 
-$dotenv = Dotenv::createImmutable('/home/davids/Desktop/CODELEX/9.dala');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $route) {
@@ -65,6 +65,7 @@ $authVariables = [
     \App\ViewVariables\TransactionsViewVariables::class,
     \App\ViewVariables\UserStocksViewVariables::class,
     \App\ViewVariables\StockAmountViewVariable::class,
+    \App\ViewVariables\SuccessViewVariables::class,
 ];
 
 foreach ($authVariables as $variable) {
@@ -104,6 +105,7 @@ switch ($routeInfo[0]) {
             echo $twig->render($response->getPath(), $response->getParameters());
 
             unset($_SESSION['error']);
+            unset($_SESSION['success']);
         }
 
         if ($response instanceof \App\Redirect) {
