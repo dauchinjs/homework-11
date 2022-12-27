@@ -22,4 +22,4 @@ Project is created with:
 7. To run the project, locate `/public` folder and you can use command `php -S localhost:8000` to run the project in your browser
 
 ## Demonstration
-![Algorithm schema]
+![Algorithm schema](https://github.com/dauchinjs/stock-market/blob/5606af16e29d404d2c182dc375cdc62fb8f8e466/gifs)
