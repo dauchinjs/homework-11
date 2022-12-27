@@ -20,3 +20,6 @@ Project is created with:
 5. Rename the `.env.example` file to `.env`
 6. Add your credentials to the `.env` file
 7. To run the project, locate `/public` folder and you can use command `php -S localhost:8000` to run the project in your browser
+
+##Demonstration
+![Algorithm schema]
