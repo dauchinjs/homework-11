@@ -22,4 +22,4 @@ Project is created with:
 7. To run the project, locate `/public` folder and you can use command `php -S localhost:8000` to run the project in your browser
 
 ## Demonstration
-![]([https://github.com/dauchinjs/stock-market/blob/main/gifs](https://media.giphy.com/media/feGiYU4TFSeJVGAiBV/giphy.gif))
+([https://github.com/dauchinjs/stock-market/blob/main/gifs](https://media.giphy.com/media/feGiYU4TFSeJVGAiBV/giphy.gif))
