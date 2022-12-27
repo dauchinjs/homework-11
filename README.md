@@ -28,6 +28,7 @@ Project is created with:
 
 ### Register and login
 ![](https://github.com/dauchinjs/stock-market/blob/main/demonstration/regist-login.gif | width=100)
+![](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png =250x250)
 
 ### Deposit withdraw funds
 ![deposit withdraw](https://github.com/dauchinjs/stock-market/blob/main/demonstration/deposit-withdraw.gif)
