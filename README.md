@@ -34,6 +34,7 @@ Project is created with:
 
 ### Register and login
 ![register-login](https://github.com/dauchinjs/stock-market/blob/main/demonstration/regist-login.gif)
+<img src="[https://your-image-url.type](https://github.com/dauchinjs/stock-market/blob/main/demonstration/regist-login.gif)" width="100" height="100">
 
 ### Deposit withdraw funds
 ![deposit withdraw](https://github.com/dauchinjs/stock-market/blob/main/demonstration/deposit-withdraw.gif)
