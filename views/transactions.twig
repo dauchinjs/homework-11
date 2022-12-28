@@ -1,0 +1,44 @@
+{% extends 'layout.twig' %}
+{% block content %}
+    <div class="flex justify-center h-auto">
+        <div class="bg-gray-200 rounded-lg shadow-md p-6 w-1/2">
+            <div class="flex justify-center">
+                <h1 class="text-2xl font-bold my-10 mb-4 mx-auto">Transactions</h1>
+            </div>
+            <h2 class="mx-auto flex justify-center text-xl">Short
+                profit: {{ overall.shortProfit|number_format(2) }}</h2>
+            <h2 class="mx-auto flex justify-center text-xl">Long
+                profit: {{ overall.longProfit|number_format(2) }}</h2>
+            <table class="table-auto overflow-y-auto ml-500 mx-auto my-10">
+                <thead>
+                <tr>
+                    <th class="px-4 py-2">Symbol</th>
+                    <th class="px-4 py-2">Action</th>
+                    <th class="px-4 py-2">Amount</th>
+                    <th class="px-4 py-2">Profit</th>
+                    <th class="px-4 py-2">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td class="border px-4 py-2 text-xl">
+                            <a href="/buySell?symbol={{ transaction.symbol }}">{{ transaction.symbol }}</a>
+                        </td>
+                        <td class="border px-4 py-2 text-xl">{{ transaction.action }}</td>
+                        <td class="border px-4 py-2 text-xl">{{ transaction.amount }}</td>
+                        {% if transaction.profit > 0 %}
+                            <td class="border px-4 py-2 text-green-700 text-xl">+{{ transaction.profit }}</td>
+                        {% elseif transaction.profit < 0 %}
+                            <td class="border px-4 py-2 text-red-700 text-xl">{{ transaction.profit }}</td>
+                        {% else %}
+                            <td class="border px-4 py-2 text-xl"></td>
+                        {% endif %}
+                        <td class="border px-4 py-2 text-xl">{{ transaction.bought_at }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

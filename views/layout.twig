@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/style/style.css">
+    <link href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.min.css" rel="stylesheet">
+    <title>Stock Market</title>
+</head>
+<body>
+<script src="//unpkg.com/alpinejs" defer></script>
+<nav style="background-color: rgb(160, 160, 160)"
+     class="flex items-center justify-between flex-wrap bg-white py-4 lg:px-12 shadow border-solid border-t-2 border-blue-700">
+    <div class="flex justify-between lg:w-auto w-full lg:border-b-0 pl-6 pr-2 border-solid border-b-2 border-gray-300 pb-5 lg:pb-0">
+        <div class="block lg:hidden ">
+            <button
+                    id="nav"
+                    class="flex items-center px-3 py-2 border-2 rounded text-blue-700 border-blue-700 hover:text-blue-700 hover:border-blue-700">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>
+                        Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div>
+        <div class="flex items-center">
+            <span class="font-bold text-xl ml-2">Stock Market</span>
+            <form action="/search" method="get" class="flex items-center">
+                <label>
+                    <input type="text" name="search" id="search" placeholder="Search for a stock"
+                           class="bg-gray-700 rounded-full ml-2 px-4 py-2 text-sm text-white focus:outline-none focus:shadow-outline" required>
+                </label>
+                <button type="submit"
+                        class="ml-1 px-2 py-1 rounded-full bg-gray-700 text-white hover:bg-gray-600 focus:outline-none focus:shadow-outline">
+                    Search
+                </button>
+            </form>
+        </div>
+
+    </div>
+    <div class="menu w-full lg:block flex-grow lg:flex lg:items-right lg:w-auto lg:px-3 px-8">
+        <div class="menu w-full lg:block flex-grow lg:flex lg:items-right lg:w-auto lg:px-3 px-8 text-red-800 ml-4">
+            <a href="/"
+               class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-red-800 mr-2">
+                Home
+            </a>
+        </div>
+        {% if auth.name is same as (null) %}
+            <div class="menu w-full lg:block flex-grow lg:flex lg:items-right lg:w-auto lg:px-3 px-8 text-red-800 ml-4">
+                <a href="/register"
+                   class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-red-800 mr-2">
+                    Register
+                </a>
+                <a href="/login"
+                   class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-red-800 mr-2">
+                    Login
+                </a>
+            </div>
+        {% else %}
+            <div class="menu w-full lg:block flex-grow lg:flex lg:items-right lg:w-auto lg:px-3 px-8 text-red-800 ml-4">
+                <p class="block mt-4 lg:inline-block lg:mt-0 px-4 py-2 rounded mr-2">Welcome, {{ auth.name }}</p>
+                <a href="/profile"
+                   class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-red-800 mr-2">
+                    Profile
+                </a>
+                <a href="/logout"
+                   class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-red-800 mr-2">
+                    Logout
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</nav>
+
+<section class="text-red-900 body-font">
+    <div class="container px-5 py-5 mx-auto">
+        {% block content %}{% endblock %}
+    </div>
+</section>
+
+</body>
+</html>

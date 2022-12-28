@@ -1,0 +1,35 @@
+{% extends 'layout.twig' %}
+{% block content %}
+<table class="table- w-full">
+    <thead>
+    <tr>
+        <th class="px-12 py-2 bg-gray-400 text-gray-800 font-bold">Symbol</th>
+        <th class="px-12 py-2 bg-gray-400 text-gray-800 font-bold">Name</th>
+        <th class="px-12 py-2 bg-gray-400 text-gray-800 font-bold">Current Price</th>
+        <th class="px-12 py-2 bg-gray-400 text-gray-800 font-bold">Previous close price</th>
+        <th class="px-12 py-2 bg-gray-400 text-gray-800 font-bold">Price percent change</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="border px-12 py-2 text-gray-800 font-bold">{{ company.ticker }}
+            <button type="button" class="border-black bg-gray-200 text-red-900 font-bold px-1 py-1 rounded-full ml-10">
+                <a href="/buySell?symbol={{ company.ticker }}">Purchase</a>
+            </button>
+        </td>
+        <td class="border px-12 py-2 text-gray-900 font-bold">{{ company.name }}</td>
+        <td class="border px-12 py-2 text-gray-900 font-bold">{{ company.currentPrice|number_format(2) }} {{ company.currency }}</td>
+        <td class="border px-12 py-2 text-gray-900 font-bold">{{ company.previousClosePrice|number_format(2) }} {{ company.currency }}</td>
+        <td class="border px-12 py-2 text-gray-900 font-bold">
+            {% if company.percentChange > 0 %}
+                <span class="text-green-700 font-bold">▲ {{ company.percentChange|number_format(2) }} %</span>
+            {% elseif company.percentChange < 0 %}
+                <span class="text-red-700 font-bold">▼ {{ company.percentChange|number_format(2) }} %</span>
+            {% else %}
+                {{ company.percentChange|number_format(2) }} %
+            {% endif %}
+        </td>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}
