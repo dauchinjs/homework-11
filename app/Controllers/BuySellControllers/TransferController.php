@@ -66,8 +66,6 @@ class TransferController
         $userStock = $transferStockService->getStockBySymbol($_POST['symbol'], $_SESSION['auth_id']);
         $stockAmount = $userStock->getAmount() - $_POST['amount'];
 
-        $transferStockService->updateStock($_SESSION['auth_id'], $stockAmount, $_POST['symbol']);
-
         $userService = new UserService();
         $userId = $userService->getUserByEmail($_POST['email']);
 
@@ -78,7 +76,8 @@ class TransferController
             $stock->getAmount(),
             $stock->getPrice()
         );
-
+        
+        $transferStockService->updateStock($_SESSION['auth_id'], $stockAmount, $_POST['symbol']);
         $transferStockService->transferStock($stock, $userId['id'], $_POST['symbol'], $_POST['amount']);
         $transferStockService->transferTransaction($stock, $_SESSION['auth_id'], $_POST['amount'], $_POST['symbol']);
 
