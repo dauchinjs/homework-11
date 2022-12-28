@@ -1,8 +1,4 @@
 <?php
-// 3gifi no 3 dazadam vietam ka strada. readme.md faila githuba - jaapraksta kas notiek, php versija, mysql versija, uzstadisanas process
-// un tad 3 gifi apaksa. jaeksporte datubaze bez datiem (eksporte datubazes shemu) (.sql dump fails) tas ta lai nebutu jaunam lietotajam jataisa datubaze
-//sis bus musu pirmais job-seeker-diary projekts
-
 
 namespace App\Controllers\BuySellControllers;
 
@@ -80,8 +76,6 @@ class BuySellController
                     $stockService->getCurrentPrice(),
                     $totalAmount,
                 );
-//                $sellProfit = $stockService->getCurrentPrice() * (int)$_POST['sell'] -
-//                    $boughtStock * (int)$_POST['sell'];
                 $longProfit = 0;
                 $transactionService->sellTransaction($stockService, $longProfit, $_POST['sell'], $_SESSION['auth_id']);
             } else {
@@ -113,8 +107,6 @@ class BuySellController
                     $stockService->getCurrentPrice(),
                     $totalAmount
                 );
-//                $buyProfit = $stockService->getCurrentPrice() * (int)$_POST['buy'] -
-//                    $boughtStock * (int)$_POST['buy'];
                 $shortProfit = 0;
                 $transactionService->buyTransaction($stockService, $shortProfit, $_POST['buy'], $_SESSION['auth_id']);
             }
