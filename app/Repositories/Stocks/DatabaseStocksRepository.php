@@ -67,10 +67,9 @@ class DatabaseStocksRepository implements StocksRepository
     public function updateStock($userId, $totalAmount, $symbol): void
     {
         if ($totalAmount === 0) {
-            Database::getConnection()->executeQuery(
-                'DELETE FROM stocks WHERE symbol = ?', [
-                $symbol,
-            ]);
+            Database::getConnection()->delete('stocks',
+                ['user_id' => $userId, 'symbol' => $symbol],
+            );
         } else {
             Database::getConnection()->update('stocks',
                 ['amount' => $totalAmount],
